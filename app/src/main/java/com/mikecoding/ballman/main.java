@@ -41,6 +41,9 @@ public class main extends AppCompatActivity {
     private int ghostX;
     private int ghostY;
 
+    //score
+    private int score = 0;
+
     //Initialize class
     private Handler handler = new Handler();
     private Timer timer = new Timer();
@@ -78,12 +81,16 @@ public class main extends AppCompatActivity {
         ghost.setX(-80f);
         ghost.setY(-80f);
 
+        scoreLabel.setText("Score : 0");
+
     }
 
     public void changePos(){
 
+        hitCheck();
+
         //orange
-        orangeX -=12;
+        orangeX -=12;//speed across the screen
         if(orangeX < 0){
             orangeX = screenWidth + 20;
             orangeY = (int) Math.floor(Math.random() * (frameHeight) - orange.getHeight());
@@ -91,6 +98,23 @@ public class main extends AppCompatActivity {
         orange.setX(orangeX);
         orange.setY(orangeY);
 
+        //ghost
+        ghostX -= 16;//speed across the screen
+        if(ghostX < 0){
+            ghostX = screenWidth + 10;
+            ghostY = (int) Math.floor(Math.random() * (frameHeight) - ghost.getHeight());
+        }
+        ghost.setX(ghostX);
+        ghost.setY(ghostY);
+
+        //blue
+        blueX -= 20; //speed across the screen
+        if(blueX < 0){
+            blueX = screenWidth + 5000;
+            blueY = (int) Math.floor(Math.random() * (frameHeight) - blue.getHeight());
+        }
+        blue.setX(blueX);
+        blue.setY(blueY);
 
         //move eater
         if(action_flg == true){
@@ -106,6 +130,56 @@ public class main extends AppCompatActivity {
         if(eaterY > frameHeight - eaterSize) eaterY = frameHeight - eaterSize;
 
         eater.setY(eaterY);
+
+        scoreLabel.setText("Score : " + score);
+
+    }
+
+    public void hitCheck(){
+        //if the center of the ball is in the hitbox of the eater, it counts as a hit
+
+        //orange
+        int orangeCenterX = orangeX + orange.getWidth() / 2;
+        int orangeCenterY = orangeY + orange.getHeight() / 2;
+
+        //0 <= orangeCenterX <= eaterWidth
+        //eaterY <= orangeCenterY <= eaterY + eaterHeight
+
+        if(0 <= orangeCenterX && orangeCenterX <= eaterSize &&
+                eaterY <= orangeCenterY && orangeCenterY <= eaterY + eaterSize){
+
+            score += 10;
+            orangeX = -10;
+
+        }
+
+        //blue
+        int blueCenterX = blueX + blue.getWidth() / 2;
+        int blueCenterY = blueY + blue.getHeight() / 2;
+
+        if(0 <= blueCenterX && blueCenterX <= eaterSize &&
+                eaterY <= blueCenterY && blueCenterY <= eaterY + eaterSize){
+
+            score += 30;
+            blueX = -10;
+
+        }
+
+        //ghost
+        int ghostCenterX = ghostX + ghost.getWidth() / 2;
+        int ghostCenterY = ghostY + ghost.getHeight() / 2;
+
+        if(0 <= ghostCenterX && ghostCenterX <= eaterSize &&
+                eaterY <= ghostCenterY && ghostCenterY <= eaterY + eaterSize){
+
+            //stop timer
+            timer.cancel();
+            timer = null;
+
+            //show results
+
+        }
+
     }
 
     public boolean onTouchEvent(MotionEvent me){
