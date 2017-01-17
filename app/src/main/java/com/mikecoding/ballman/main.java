@@ -1,12 +1,15 @@
 package com.mikecoding.ballman;
 
+import android.graphics.Point;
 import android.media.Image;
 import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,9 +29,17 @@ public class main extends AppCompatActivity {
     //Size
     private int frameHeight;
     private int eaterSize;
+    private int screenWidth;
+    private int screenHeight;
 
     //position
     private int eaterY;
+    private int orangeX;
+    private int orangeY;
+    private int blueX;
+    private int blueY;
+    private int ghostX;
+    private int ghostY;
 
     //Initialize class
     private Handler handler = new Handler();
@@ -50,6 +61,15 @@ public class main extends AppCompatActivity {
         blue = (ImageView) findViewById(R.id.blue);
         ghost = (ImageView) findViewById(R.id.ghost);
 
+        //get screen size
+        WindowManager wm = getWindowManager();
+        Display disp = wm.getDefaultDisplay();
+        Point size = new Point();
+        disp.getSize(size);
+
+        screenWidth = size.x;
+        screenHeight = size.y;
+
         // move to out of screen
         orange.setX(-80f);
         orange.setY(-80f);
@@ -61,6 +81,16 @@ public class main extends AppCompatActivity {
     }
 
     public void changePos(){
+
+        //orange
+        orangeX -=12;
+        if(orangeX < 0){
+            orangeX = screenWidth + 20;
+            orangeY = (int) Math.floor(Math.random() * (frameHeight) - orange.getHeight());
+        }
+        orange.setX(orangeX);
+        orange.setY(orangeY);
+
 
         //move eater
         if(action_flg == true){
