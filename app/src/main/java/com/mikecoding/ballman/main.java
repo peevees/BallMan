@@ -1,5 +1,6 @@
 package com.mikecoding.ballman;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.media.Image;
 import android.os.Handler;
@@ -177,6 +178,9 @@ public class main extends AppCompatActivity {
             timer = null;
 
             //show results
+            Intent intent = new Intent(getApplicationContext(), result.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
 
         }
 
