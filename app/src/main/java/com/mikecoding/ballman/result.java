@@ -1,9 +1,11 @@
 package com.mikecoding.ballman;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class result extends AppCompatActivity {
@@ -35,4 +37,10 @@ public class result extends AppCompatActivity {
         }
 
     }
+
+    public void tryAgain(View view){
+        startActivity(new Intent(getApplicationContext(), main.class));
+
+    }
+
 }
