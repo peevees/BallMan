@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -43,6 +44,12 @@ public class main extends AppCompatActivity {
     private int ghostX;
     private int ghostY;
 
+    //speed
+    private int eaterSpeed;
+    private int orangeSpeed;
+    private int blueSpeed;
+    private int ghostSpeed;
+
     //score
     private int score = 0;
 
@@ -78,6 +85,20 @@ public class main extends AppCompatActivity {
         screenWidth = size.x;
         screenHeight = size.y;
 
+        //now
+        //nexus4 width: 764 height: 1184
+        //speed eater: 20 orange: 12 blue: 20 ghost: 16
+
+        eaterSpeed = Math.round(screenHeight / 60F);  // 1184 / 60 = 19.733..... => 20
+        orangeSpeed = Math.round(screenWidth / 60F);  // 768 / 60 = 12.8 => 13
+        blueSpeed = Math.round(screenWidth / 36F);    // 768 / 36 = 21.333 => 21
+        ghostSpeed = Math.round(screenWidth / 45F);   // 768 / 45 = 17.06... => 17
+
+//        Log.v("SPEED_EATER", eaterSpeed+"");
+//        Log.v("SPEED_ORANGE", orangeSpeed+"");
+//        Log.v("SPEED_BLUE", blueSpeed+"");
+//        Log.v("SPEED_GHOST", ghostSpeed+"");
+
         // move to out of screen
         orange.setX(-80f);
         orange.setY(-80f);
@@ -95,7 +116,7 @@ public class main extends AppCompatActivity {
         hitCheck();
 
         //orange
-        orangeX -=12;//speed across the screen
+        orangeX -=orangeSpeed;
         if(orangeX < 0){
             orangeX = screenWidth + 20;
             orangeY = (int) Math.floor(Math.random() * (frameHeight) - orange.getHeight());
@@ -104,7 +125,7 @@ public class main extends AppCompatActivity {
         orange.setY(orangeY);
 
         //ghost
-        ghostX -= 16;//speed across the screen
+        ghostX -= ghostSpeed;
         if(ghostX < 0){
             ghostX = screenWidth + 10;
             ghostY = (int) Math.floor(Math.random() * (frameHeight) - ghost.getHeight());
@@ -113,7 +134,7 @@ public class main extends AppCompatActivity {
         ghost.setY(ghostY);
 
         //blue
-        blueX -= 20; //speed across the screen
+        blueX -= blueSpeed;
         if(blueX < 0){
             blueX = screenWidth + 5000;
             blueY = (int) Math.floor(Math.random() * (frameHeight) - blue.getHeight());
@@ -124,9 +145,9 @@ public class main extends AppCompatActivity {
         //move eater
         if(action_flg == true){
             //Touching
-            eaterY -= 20;
+            eaterY -= eaterSpeed;
         } else {
-            eaterY += 20;
+            eaterY += eaterSpeed;
         }
 
         //check eater position
