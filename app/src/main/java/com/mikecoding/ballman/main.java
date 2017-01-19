@@ -2,9 +2,7 @@ package com.mikecoding.ballman;
 
 import android.content.Intent;
 import android.graphics.Point;
-import android.media.Image;
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -94,10 +92,10 @@ public class main extends AppCompatActivity {
         blueSpeed = Math.round(screenWidth / 36F);    // 768 / 36 = 21.333 => 21
         ghostSpeed = Math.round(screenWidth / 45F);   // 768 / 45 = 17.06... => 17
 
-//        Log.v("SPEED_EATER", eaterSpeed+"");
-//        Log.v("SPEED_ORANGE", orangeSpeed+"");
-//        Log.v("SPEED_BLUE", blueSpeed+"");
-//        Log.v("SPEED_GHOST", ghostSpeed+"");
+        // Log.v("SPEED_EATER", eaterSpeed+"");
+        // Log.v("SPEED_ORANGE", orangeSpeed+"");
+        // Log.v("SPEED_BLUE", blueSpeed+"");
+        // Log.v("SPEED_GHOST", ghostSpeed+"");
 
         // move to out of screen
         orange.setX(-80f);

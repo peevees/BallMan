@@ -22,7 +22,6 @@ public class start extends AppCompatActivity {
         //create the interstitial
         interstitial = new InterstitialAd(this);
 
-        //set your unit id, this is a test id!
         //test ids
         //for banner ads: ca-app-pub-3940256099942544/6300978111
         //For Interstitial Ads: ca-app-pub-3940256099942544/1033173712
@@ -38,12 +37,13 @@ public class start extends AppCompatActivity {
         adView.loadAd(adRequest);
         */
 
+        //set your unit id, this is a test id!
         interstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
         //create request
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        //start
+        //start loading...
         interstitial.loadAd(adRequest);
 
         //once request is loaded, display ad
@@ -52,7 +52,6 @@ public class start extends AppCompatActivity {
             public void onAdLoaded(){
                 displayInterstitial();
             }
-
         });
 
     }
@@ -64,7 +63,6 @@ public class start extends AppCompatActivity {
         }
 
     }
-
 
     public void startGame(View view){
         startActivity(new Intent(getApplicationContext(), main.class));

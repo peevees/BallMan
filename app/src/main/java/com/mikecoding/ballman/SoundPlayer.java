@@ -6,10 +6,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 
-/**
- * Created by micha on 2017-01-18.
- */
-
 public class SoundPlayer {
 
     private AudioAttributes audioAttributes;
@@ -35,7 +31,7 @@ public class SoundPlayer {
                     .build();
         }else{
 
-            //SoundPool (int maxStreams, inte streamType, int srcQuality)
+            //SoundPool (int maxStreams, int streamType, int srcQuality)
             soundPool = new SoundPool(SOUND_POOL_MAX, AudioManager.STREAM_MUSIC, 0);
 
         }

@@ -22,7 +22,7 @@ public class result extends AppCompatActivity {
         int score = getIntent().getIntExtra("SCORE", 0);
         scoreLabel.setText(score + "");
 
-        SharedPreferences settings = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences("HIGH_SCORE", Context.MODE_PRIVATE);
         int highScore = settings.getInt("HIGH_SCORE", 0);
 
         if(score > highScore){

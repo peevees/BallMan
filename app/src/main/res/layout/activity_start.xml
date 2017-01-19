@@ -31,7 +31,6 @@
                 android:text="30 Points"
                 android:textSize="18sp"
                 android:paddingLeft="10dp"/>
-
         </TableRow>
 
         <TableRow
@@ -47,7 +46,6 @@
                 android:text="10 Points"
                 android:textSize="18sp"
                 android:paddingLeft="10dp"/>
-
         </TableRow>
 
         <TableRow
@@ -63,7 +61,6 @@
                 android:text="Game Over"
                 android:textSize="18sp"
                 android:paddingLeft="10dp"/>
-
         </TableRow>
 
     </TableLayout>
