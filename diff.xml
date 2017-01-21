@@ -4,23 +4,8 @@
       <entry key="ChangesView">
         <PlaceSettings />
       </entry>
-      <entry key="CommitDialog">
-        <PlaceSettings />
-      </entry>
       <entry key="Default">
-        <PlaceSettings>
-          <option name="DIFF_TOOLS_ORDER">
-            <list>
-              <option value="org.jetbrains.idea.svn.difftool.properties.SvnPropertiesDiffTool" />
-              <option value="org.jetbrains.idea.svn.difftool.SvnPhantomChangeDiffRequestProvider.SvnPhantomDiffTool" />
-              <option value="org.jetbrains.idea.svn.difftool.SvnTreeConflictDiffRequestProvider.SvnTreeConflictDiffTool" />
-              <option value="com.intellij.diff.tools.simple.SimpleDiffTool" />
-              <option value="com.intellij.diff.tools.fragmented.UnifiedDiffTool" />
-              <option value="com.intellij.diff.tools.binary.BinaryDiffTool" />
-              <option value="com.intellij.diff.tools.dir.DirDiffTool" />
-            </list>
-          </option>
-        </PlaceSettings>
+        <PlaceSettings />
       </entry>
     </option>
   </component>
@@ -37,11 +22,7 @@
         </PlaceSettings>
       </entry>
       <entry key="Default">
-        <PlaceSettings>
-          <option name="IGNORE_POLICY" value="TRIM_WHITESPACES" />
-          <option name="SHOW_WHITESPACES" value="true" />
-          <option name="SHOW_INDENT_LINES" value="true" />
-        </PlaceSettings>
+        <PlaceSettings />
       </entry>
     </option>
   </component>
